@@ -1,0 +1,30 @@
+doctype 5
+html(class='han-init', lang='zh-cmn-Hant')
+  head
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='stylesheet', media='all', href='http://cdnjs.cloudflare.com/ajax/libs/Han/3.2.7/han.min.css')
+    link(rel='stylesheet', href='/common.css')
+    style(type='text/css')
+      .container {
+        margin-left: auto;
+        margin-right: auto;
+        width: 70%;
+        font-size: 14pt;
+      }
+      footer {
+        text-align: center;
+        margin-top: 30px;
+        margin-bottom: 50px;
+      }
+    title #{sitename}－首页
+  body
+    //- include ./compatibility.jade
+    //- include ./index-body.jade
+    //- if extensions.mathjax
+    //-   include ./extensions/mathjax.jade
+    //- if extensions.disqus
+    //-   include ./extensions/disqus.jade
+    //- if extensions.syntaxHighlight
+    //-   include ./extensions/syntax-highlight.jade
+    article.container= content
+    script(src='http://cdnjs.cloudflare.com/ajax/libs/Han/3.2.7/han.min.js')

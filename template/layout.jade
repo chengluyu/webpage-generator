@@ -1,0 +1,23 @@
+doctype html
+html(class='han-init', lang='zh-cmn-Hans')
+  head
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    meta(http-equiv='Content-Type',content='text/html; charset=utf-8')
+    link(rel='stylesheet', media='all', href='han/han.min.css')
+    link(rel='stylesheet', href='css/common.css')
+    block head
+  body
+    header
+      ul.nav
+        li.nav-item.nav-brand
+          a(href='index.html') Brand
+        li.nav-item
+          a(href='archive.html') Archives
+        li.nav-item
+          a(href='tags.html') Tags
+        li.nav-item
+          a(href='about.html') About
+    block container
+    footer
+      p.copyright Copyright © Cheng Luyu 2015-2016 — Powered by Node.js and Han.css
+    script(src='han/han.min.js')

@@ -1,0 +1,13 @@
+extends layout.jade
+
+block head
+  title #{sitename}－#{metadata.title}
+
+block container
+  .container
+    .title
+      h1= metadata.title
+      ul.metadata-list
+        li.metadata-item 日期 #{metadata.date}
+        li.metadata-item 分类
+    article.content !{content}

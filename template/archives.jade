@@ -1,0 +1,15 @@
+extends layout.jade
+
+block head
+  title #{sitename}－Archives
+
+block container
+  - var n = Math.min(5, all.length);
+  - for (var i = 0; i < n; i++) {
+  .container
+    .title
+      h1= all[i].metadata.title
+      ul.metadata-list
+        li.metadata-item 日期 #{all[i].metadata.date}
+    article.content !{all[i].excerpts}
+  - }
