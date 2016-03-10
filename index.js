@@ -3,8 +3,12 @@
 (() => {
 
   const CONFIG = {
-    sitename: "Site Name",
-    excerptParagraphCount: 3,
+    metadata: {
+      sitename: "Site Name"
+    },
+    display: {
+      excerptParagraphCount: 6
+    },
     datetime: {
       locale: "zh-cn",
       format: "YYYY年MMMD日"
@@ -52,7 +56,7 @@
       return () => i >= tokens.length ? null : tokens[i++];
     })();
 
-    let n = CONFIG.excerptParagraphCount
+    let n = CONFIG.display.excerptParagraphCount
       , excerpts = [];
 
     function sequence() {
