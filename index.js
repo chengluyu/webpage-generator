@@ -5,6 +5,10 @@
   const CONFIG = {
     sitename: "Site Name",
     excerptParagraphCount: 3,
+    datetime: {
+      locale: "zh-cn",
+      format: "YYYY年MMMD日"
+    }
   };
 
   let colors = require("colors")
@@ -15,6 +19,8 @@
     , path = require("path")
     , unidecode = require("unidecode")
     ;
+
+  moment.locale(CONFIG.datetime.locale);
 
   const args = process.argv.slice(2);
 
@@ -148,7 +154,7 @@
         return {
           metadata: {
             title: frontmatter.title,
-            date: frontmatter.date || fs.lstatSync(x).birthtime,
+            date: moment(frontmatter.date || fs.lstatSync(x).birthtime).format(CONFIG.datetime.format),
             permalink: frontmatter.permalink || unidecode(frontmatter.title).replace(/[^\W\-_]+|\s+/, '-'),
             published: frontmatter.published || true
           },
@@ -170,10 +176,10 @@
   const ARTICLE_TEMPLATE = template("article.jade");
 
   const JADE_OPTIONS = {
-    pretty: "  ", // used to debug
+    pretty: "  " // used to debug
   };
 
-  // const renderIndex = jade.compile(INDEX_TEMPLATE, JADE_OPTIONS);
+  const renderIndex = jade.compileFile(INDEX_TEMPLATE, JADE_OPTIONS);
   const renderArchive = jade.compileFile(ARCHIVE_TEMPLATE, JADE_OPTIONS);
   const renderArticle = jade.compileFile(ARTICLE_TEMPLATE, JADE_OPTIONS);
 
@@ -196,5 +202,5 @@
 
   console.log("======== 3.3 Generating Homepage ========".blue);
   // generate index
-  // save("index", renderIndex({ partial: contents.slice(0, 5) }));
+  save("index", renderIndex({ partial: contents.slice(0, 5) }));
 })();
